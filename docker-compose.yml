@@ -1,0 +1,11 @@
+services:
+  web:
+    image: nginx:alpine
+    container_name: test_server
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./ssl:/etc/ssl
+      - ./static:/usr/share/nginx/static
+      - ./web:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf

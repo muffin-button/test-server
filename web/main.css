@@ -1,0 +1,19 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app-header {
+    background-color: rgb(26, 143, 189);
+    color: white;
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.app-content {
+    margin-top: 100px;
+    position: absolute;
+    padding-left: 20px;
+}
