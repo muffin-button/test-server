@@ -21,5 +21,43 @@
         <div>
             <button onclick="corsCheck()">Click here for CORS check</button>
         </div>
+        <br>
+        <div>
+            <form id="my-form" action="/upload" method="POST">
+                <div class="form-group">
+                    <input id="file-input" type="file" class="form-control-file" name="upload" multiple>
+                </div>
+                <div class="form-group">
+                    <button type="submit" id="upload-button" class="btn btn-default">Submit File</button>
+                </div>
+            </form>
+        </div>
     </div>
+
+    <script>
+        // prevents form redirection after submission
+        var form = document.getElementById("my-form");
+        var fileSelect = document.getElementById("file-input");
+        var uploadButton = document.getElementById("upload-button");
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+            uploadButton.innerHTML = "uploading...";
+            var files = fileSelect.files;
+            var formData = new FormData();
+            formData.append('upload', files[0], files[0].name);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/upload", true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    uploadButton.innerHTML = 'Submit File';
+                    alert("Success");
+                } else {
+                    alert('An error has occurred');
+                }
+            }
+            xhr.send(formData);
+        }
+    </script>
+
 </body>
